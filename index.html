@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><-Game of Life-></title>
+  <link href="css/chaos.css" rel="stylesheet">
+  <!-- Modules -->
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+  <!-- Controllers -->
+  <script src="controllers/GameController.js"></script>
+  <script src="controllers/StyleController.js"></script>
+  <!-- Filters-->
+  <script src="filters/blackSquare.js"></script>
+  <script src="filters/whiteSquare.js"></script>
+  <script src="filters/test.js"></script>
+  <style>
+   table {
+    width: 0px; /* Ширина таблицы */
+    height: 0px; /* Высота таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    border-spacing: 0px 0px;
+  }
+    td {
+    text-align: center; /* Выравниваем текст по центру ячейки */
+    padding: 0px;
+    margin: 0px;
+    line-height: 65%;
+    font-family: Lucida Console, monospace;
+    font-size: 4vmin;
+  }
+  </style>
+  <style>
+  html {
+    overflow : hidden;
+  }
+  body {
+    margin: 0px;
+  }
+  .outer:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  .inner{
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .outer {
+    text-align: center;
+    height:100vh;
+    width: 100vw;
+  }
+  </style>
+
+</head>
+<body ng-app="myApp" ng-controller='GameController'>
+  <div class=outer>
+    <div ng-show ="!showEditor" class="inner">
+      <table style="border: 1px solid #00CCCC;">
+        <tr ng-repeat="(rowIndex, row) in board">
+          <td ng-repeat="cell in row track by $index">
+            <div>{{cell | blackSquare}}</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="inner" ng-show ="showEditor">
+      <table style="border: 1px solid #00CCCC;">
+        <tr ng-repeat="(rowIndex, row) in board">
+          <td ng-repeat="cell in row track by $index">
+            <div ng-click="swap(rowIndex, $index)">{{cell | whiteSquare}}</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div ng-show ="showInfoDialog" ng-click="closeInfoDialog()">
+      <div class = "inner" style="border=1px;">
+        <h1>test</h1>
+      </div>
+    </div>
+  </div>
+    <div class="side"  ng-mouseenter="showDropMenu = true" ng-mouseleave="showDropMenu = false">
+        <ul class="menu">
+          <li class="menu__list"><a href="#"><img src="icons/list.png"  border="0" alt=" " width="100%"></a>
+            <ul class="menu__drop" ng-show="showDropMenu">
+              <li><a ng-click="up()" href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(-90deg);"></a></li>
+              <li><a ng-click="pause_and_play()" href="#"><img ng-src="{{ pause_or_play_icon }}" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+              <li><a ng-click="down()" href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(90deg);"></a></li>
+              <li><a ng-click="settings()" href="#"><img src="icons/mechanical-gears.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+              <li><a ng-click="info()" href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="preloader" ng-init="preloaderShow = true" ng-show="preloaderShow">
+
+      </div>
+    <script>preloaderShow = false</script>
+</body>
+</html>

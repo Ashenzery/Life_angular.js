@@ -1,0 +1,97 @@
+html, body {
+  background:#000505;
+  color:#00CCCC;
+  overflow:  hidden;
+}
+
+table {
+   border: 1px solid #00CCCC;
+   padding-top: 0;
+   padding-bottom: 1vmin;
+   padding-left: 0.5vmin;
+   padding-right: 0.5vmin;
+ }
+
+a {
+    text-decoration: none;
+}
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.side {
+    position: absolute;
+    left: 3vmin; /* Положение левого края */
+    top: 3vmin; /* Положение верхнего края */
+    float: right;
+    margin: 0vmin;
+    width: 8vmin;
+}
+.menu a {
+    background: none repeat scroll 0 0;
+    border-radius: 0.5vmin;
+    color: #fff;
+    display: block;
+    padding: 2vmin;
+    transition: all 0.5s ease 0s;
+}
+.menu a:hover {
+    padding: 1vmin;
+    border-radius: 0.5vmin;
+    background: #ff0000 none repeat scroll 0 0;
+}
+.menu li .menu__drop li a {
+    border-radius: 0.5vmin;
+    border-top: 1px solid #00ffff;
+}
+.menu__list {
+    position: relative;
+}
+.menu__drop {
+    left: 0%;
+    position: absolute;
+    transition: opacity 0.5s ease 0s;
+    width: 100%;
+}
+.menu__list:hover .menu__drop {
+    top: 100%;
+    opacity: 1;
+}
+.container {
+  padding-top: 10px;
+}
+
+#popUpDialog-bg {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+#popUpDialog {
+  position: fixed;
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: 5%;
+  padding: 2vmin;
+  border-radius: 5px;
+  background: white;
+}
+#popUpDialog .content {
+  margin-bottom: 15px;
+  text-align: center;
+}
+#popUpDialog .buttons-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.DialogContent {
+  font-family: Arial;
+  color: black;
+  margin: 10px;
+  padding: 10px;
+  list-style: circle inside;
+}
