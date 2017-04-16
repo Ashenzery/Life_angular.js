@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title><-Game of Life-></title>
+  <link href="css/main.css" rel="stylesheet">
   <link href="css/chaos.css" rel="stylesheet">
   <!-- Modules -->
   <script src="angular.min.js"></script>
@@ -14,53 +15,12 @@
   <script src="filters/blackSquare.js"></script>
   <script src="filters/whiteSquare.js"></script>
   <script src="filters/test.js"></script>
-  <style>
-   table {
-    width: 0px; /* Ширина таблицы */
-    height: 0px; /* Высота таблицы */
-    margin: auto; /* Выравниваем таблицу по центру окна  */
-    border-spacing: 0px 0px;
-  }
-    td {
-    text-align: center; /* Выравниваем текст по центру ячейки */
-    padding: 0px;
-    margin: 0px;
-    line-height: 65%;
-    font-family: Lucida Console, monospace;
-    font-size: 4vmin;
-  }
-  </style>
-  <style>
-  html {
-    overflow : hidden;
-  }
-  body {
-    margin: 0px;
-  }
-  .outer:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-  }
-
-  .inner{
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .outer {
-    text-align: center;
-    height:100vh;
-    width: 100vw;
-  }
-  </style>
 
 </head>
 <body ng-app="myApp" ng-controller='GameController'>
   <div class=outer>
     <div ng-show ="!showEditor" class="inner">
-      <table style="border: 1px solid #00CCCC;">
+      <table>
         <tr ng-repeat="(rowIndex, row) in board">
           <td ng-repeat="cell in row track by $index">
             <div>{{cell | blackSquare}}</div>
@@ -76,11 +36,6 @@
           </td>
         </tr>
       </table>
-    </div>
-    <div ng-show ="showInfoDialog" ng-click="closeInfoDialog()">
-      <div class = "inner" style="border=1px;">
-        <h1>test</h1>
-      </div>
     </div>
   </div>
     <div class="side"  ng-mouseenter="showDropMenu = true" ng-mouseleave="showDropMenu = false">

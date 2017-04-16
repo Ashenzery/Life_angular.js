@@ -1,0 +1,91 @@
+html, body {
+  overflow:  hidden;
+  margin: 0px;
+}
+
+table {
+  width: 0px; /* Ширина таблицы */
+    height: 0px; /* Высота таблицы */
+    margin: auto; /* Выравниваем таблицу по центру окна  */
+    border-spacing: 0px 0px;
+    padding-top: 0;
+    padding-bottom: 1vmin;
+    padding-left: 0.5vmin;
+    padding-right: 0.5vmin;
+ }
+
+ td {
+  text-align: center; /* Выравниваем текст по центру ячейки */
+  padding: 0px;
+  margin: 0px;
+  line-height: 65%;
+  font-family: Lucida Console, monospace;
+  font-size: 4vmin;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+.outer:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.inner{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.outer {
+  text-align: center;
+  height:100vh;
+  width: 100vw;
+}
+
+.side {
+    position: absolute;
+    left: 3vmin; /* Положение левого края */
+    top: 3vmin; /* Положение верхнего края */
+    float: right;
+    margin: 0vmin;
+    width: 8vmin;
+}
+.menu a {
+    background: none repeat scroll 0 0;
+    border-radius: 0.5vmin;
+    display: block;
+    padding: 2vmin;
+    transition: all 0.5s ease 0s;
+}
+.menu a:hover {
+    padding: 1vmin;
+    border-radius: 0.5vmin;
+}
+.menu li .menu__drop li a {
+    border-radius: 0.5vmin;
+}
+.menu__list {
+    position: relative;
+}
+.menu__drop {
+    left: 0%;
+    position: absolute;
+    transition: opacity 0.5s ease 0s;
+    width: 100%;
+}
+.menu__list:hover .menu__drop {
+    top: 100%;
+    opacity: 1;
+}
+.container {
+  padding-top: 10px;
+}

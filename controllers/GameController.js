@@ -215,7 +215,7 @@ app.controller('GameController',[
       $interval.cancel($scope.mainTimer);
     };
     $scope.play = function() {
-      $scope.mainTimer = $interval($scope.main, 50);
+      $scope.mainTimer = $interval($scope.main, 300);
     };
     $scope.pause_and_play = function() {
       if ($scope.showEditor) {
