@@ -2,9 +2,15 @@ html, body {
   background:#000505;
   color:#00CCCC;
 }
-table {
-   border: 1px solid #00CCCC;
+
+tr {
+  border-left: 1px solid #00ffff;
+  border-right: 1px solid #00ffff;
 }
+
+table {
+}
+
 .menu a {
     color: #fff;
 }

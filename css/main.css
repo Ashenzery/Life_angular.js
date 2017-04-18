@@ -8,10 +8,8 @@ table {
     height: 0px; /* Высота таблицы */
     margin: auto; /* Выравниваем таблицу по центру окна  */
     border-spacing: 0px 0px;
+    padding: 0.5vmin;
     padding-top: 0;
-    padding-bottom: 1vmin;
-    padding-left: 0.5vmin;
-    padding-right: 0.5vmin;
  }
 
  td {
