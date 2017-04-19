@@ -3,12 +3,14 @@ html, body {
   color:#00CCCC;
 }
 
-tr {
-  border-left: 1px solid #00ffff;
-  border-right: 1px solid #00ffff;
+.in {
+  border: 1px solid #00ffff;
 }
 
-table {
+.settings {
+  padding: 0px;
+  width: 100%;
+  border: 1px solid #00ffff;
 }
 
 .menu a {

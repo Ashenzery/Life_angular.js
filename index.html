@@ -18,26 +18,38 @@
 
 </head>
 <body ng-app="myApp" ng-controller='GameController'>
-  <div class=outer>
+  <div class="outer">
     <div ng-show ="!showEditor" class="inner">
       <table>
-        <tr ng-repeat="(rowIndex, row) in board">
-          <td ng-repeat="cell in row track by $index">
-            <div>{{cell | blackSquare}}</div>
+        <tr class="in">
+          <td>
+            <table class="tableInTable">
+              <tr ng-repeat="(rowIndex, row) in board" class="row">
+                <td ng-repeat="cell in row track by $index">
+                  <div>{{cell | blackSquare}}</div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
-        <tr style="width: 10vw; height: 10vh;"></tr>
+        <tr class="ph"></tr>
       </table>
     </div>
     <div class="inner" ng-show ="showEditor">
       <table>
-        <tr ng-repeat="(rowIndex, row) in board">
-          <td ng-repeat="cell in row track by $index">
-            <div ng-click="swap(rowIndex, $index)">{{cell | whiteSquare}}</div>
+        <tr class="in">
+          <td>
+            <table class="tableInTable">
+              <tr ng-repeat="(rowIndex, row) in board" class="row">
+                <td ng-repeat="cell in row track by $index">
+                  <div ng-click="swap(rowIndex, $index)">{{cell | whiteSquare}}</div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
-        <tr style="width: 10vw; height: 10vh;">
-          
+        <tr class="settings">
+          <td><b>TODO</b><td>
         </tr>
       </table>
     </div>
