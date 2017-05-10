@@ -25,9 +25,7 @@
           <td>
             <table class="tableInTable">
               <tr ng-repeat="(rowIndex, row) in board" class="row">
-                <td ng-repeat="cell in row track by $index">
-                  <div>{{cell | blackSquare}}</div>
-                </td>
+                <td ng-repeat="cell in row track by $index" class="cell">{{cell | blackSquare}}</td>
               </tr>
             </table>
           </td>
@@ -49,7 +47,7 @@
           </td>
         </tr>
         <tr class="settings">
-          <td><b>TODO</b><td>
+          <td><b>TODO</b></td>
         </tr>
       </table>
     </div>
