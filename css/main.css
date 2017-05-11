@@ -36,7 +36,12 @@ ul {
 .ph, .settings {
   border: 0;
   border-collapse: collapse;
-  height: 10vh;
+  height: 100px;
+}
+
+.settings {
+  padding: 0px;
+  width: 100%;
 }
 
 .inner{

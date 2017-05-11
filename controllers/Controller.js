@@ -1,4 +1,4 @@
-alert("todo: прелоадер, ползунок скорости, инфодиалог по клику на кнопку инфо, переключение цветовых css`ов в сплывающем меню, всплывющее меню выбора готового шаблона")
+alert("todo: модельное окно инфодайлога, прелоадер, добавить альтернативных стилей, альтернативные шаблоны, favicon, исправить начальное положение слайдера и вообще сделать нормальный settings")
 
 
 var glider = [
@@ -74,11 +74,22 @@ var warp = function(fy, fx, yLenBoard, xLenBoard) {
 };
 
 
-app.controller('GameController',[
+app.controller('Controller',[
   '$scope',
   '$interval',
   function($scope, $interval) {
     $scope.crutch = true;
+    $scope.slider = {
+    value: 500,
+    options: {
+        floor: 40,
+        ceil: 1000,
+        step: 5,
+        rightToLeft: true,
+        hidePointerLabels: true,
+        hideLimitLabels: true
+    }
+  };
     $scope.initBoard = function(x, y, form, yShift, xShift) {
       var board = new Array(y);
       for (var i = 0; i < y; i++) {
@@ -99,15 +110,15 @@ app.controller('GameController',[
       }
       $scope.story = [];
       $scope.story[0] = board;
-      $scope.maps = $scope.makeList($scope.story, 25, 25);
-      return board;
+      $scope.maps = $scope.makeList($scope.story, 35, 35);
+      $scope.board = deepCopy(board)
     };
     $scope.pause_or_play_icon = "icons/music-player-play.png",
     $scope.numOfNeighbors = function(board, y, x) {
       var n = 0;
       for(var counterY = y-1; counterY < y+2; counterY++) {
         for(var counterX = x-1; counterX < x+2; counterX++) {
-          [new_y, new_x] = warp(counterY, counterX, 25, 25);
+          [new_y, new_x] = warp(counterY, counterX, 35, 35);
            if (counterX === x && counterY === y) {
             continue;
           } if (board[new_y][new_x]) {
@@ -146,7 +157,7 @@ app.controller('GameController',[
       var x = 0;
       for (var c = 0; c < maps.length; c++) {
         [y, x] = maps[c];
-        var cell = warp(y, x, 25, 25);
+        var cell = warp(y, x, 35, 35);
         y = cell[0];
         x = cell[1];
         if (board[y][x]) {
@@ -169,7 +180,7 @@ app.controller('GameController',[
         if(isSame($scope.board, $scope.story[gen])) {
           //location.href=location.href;
           if (!gen) {
-            $scope.board = $scope.initBoard(25, 25, deepCopy($scope.story[0]), 0, 0);
+            $scope.initBoard(35, 35, deepCopy($scope.story[0]), 0, 0);
             $scope.story.length = 1;
           /*} else if (gen > 2) {
             $scope.board = deepCopy($scope.story[gen])
@@ -181,8 +192,7 @@ app.controller('GameController',[
         }
       }
     },
-    $scope.board = $scope.initBoard(25, 25, dieHard, 10, 8);
-    //$scope.board = $scope.initBoard(25, 25, glider, 0, 0)
+    $scope.initBoard(35, 35, glider, 0, 0);
 
     $scope.main = function() {
       $scope.crutch = false;
@@ -190,7 +200,7 @@ app.controller('GameController',[
       $scope.board = $scope.genStep($scope.maps, $scope.story)
       $scope.isRepeated()
       $scope.story[$scope.story.length] = $scope.board
-      $scope.maps = $scope.makeList($scope.story, 25, 25)
+      $scope.maps = $scope.makeList($scope.story, 35, 35)
       $scope.crutch = true;
     },
     $scope.mainTimer = $interval($scope.main, 10000),
@@ -218,7 +228,7 @@ app.controller('GameController',[
       $interval.cancel($scope.mainTimer);
     };
     $scope.play = function() {
-      $scope.mainTimer = $interval($scope.main, 300);
+      $scope.mainTimer = $interval($scope.main, $scope.slider.value);
     };
     $scope.pause_and_play = function() {
       if ($scope.showEditor) {
@@ -239,10 +249,11 @@ app.controller('GameController',[
     };
     $scope.settings = function() {
       $scope.showEditor = !$scope.showEditor;
+      $scope.pause_or_play_icon = "icons/music-player-play.png"
       if ($scope.showEditor) {
         $scope.pause()
       } else {
-        $scope.board = $scope.initBoard(25, 25, deepCopy($scope.board), 0, 0)
+        $scope.initBoard(35, 35, deepCopy($scope.board), 0, 0)
       }
     };
     $scope.closeInfoDialog = function() {
@@ -252,6 +263,18 @@ app.controller('GameController',[
     $scope.showEditor = false;
     $scope.swap = function(x, y) {
       $scope.board[x][y] = +!$scope.board[x][y]
+    };
+    $scope.colors = [
+      { name: "chaos", src: "css/chaos.css" },
+      { name: "bluemoon", src: "css/bluemoon.css" }
+    ];
+    $scope.characters = [
+      { name: "Glider", matrix: glider, yShift: 0 , xShift: 0},
+      { name: "Die Hard", matrix: dieHard, yShift: 15 , xShift: 13},
+      { name: "Clear", matrix: [[]], yShift: 0 , xShift: 0}
+    ];
+    $scope.setColor = function() {
+      document.getElementById("color").href = $scope.selectedColor.src
     };
   }
 ]

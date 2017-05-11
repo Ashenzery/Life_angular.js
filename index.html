@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <title><-Game of Life-></title>
   <link href="css/main.css" rel="stylesheet">
-  <link href="css/chaos.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="rzslider.min.css"/>
+  <link href="css/chaos.css" rel="stylesheet" id="color">
   <!-- Modules -->
   <script src="angular.min.js"></script>
   <script src="app.js"></script>
   <!-- Controllers -->
-  <script src="controllers/GameController.js"></script>
-  <script src="controllers/StyleController.js"></script>
-  <!-- Filters-->
+  <script src="controllers/Controller.js"></script>
+  <!-- Filters -->
   <script src="filters/blackSquare.js"></script>
   <script src="filters/whiteSquare.js"></script>
   <script src="filters/test.js"></script>
-
+  <!-- Slider -->
+  <script src="rzslider.min.js"></script>
 </head>
-<body ng-app="myApp" ng-controller='GameController'>
+<body ng-app="myApp" ng-controller='Controller'>
   <div class="outer">
     <div ng-show ="!showEditor" class="inner">
       <table>
@@ -47,20 +48,24 @@
           </td>
         </tr>
         <tr class="settings">
-          <td><b>TODO</b></td>
+          <td>
+            <select ng-model="selectedColor" ng-options="x.name for x in colors" ng-change="setColor()"></select>
+            <select ng-model="selectedForm" ng-options="x.name for x in characters" ng-change="initBoard(35, 35, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)"></select>
+            <rzslider class="custom-slider"  rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+          </td>
         </tr>
       </table>
     </div>
   </div>
     <div class="side"  ng-mouseenter="showDropMenu = true" ng-mouseleave="showDropMenu = false">
         <ul class="menu">
-          <li class="menu__list"><a href="#"><img src="icons/list.png"  border="0" alt=" " width="100%"></a>
+          <li class="menu__list"><a ng-href="#"><img src="icons/list.png"  border="0" alt=" " width="100%"></a>
             <ul class="menu__drop" ng-show="showDropMenu">
-              <li><a ng-click="up()" href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(-90deg);"></a></li>
-              <li><a ng-click="pause_and_play()" href="#"><img ng-src="{{ pause_or_play_icon }}" alt=" " width="100%" style="vertical-align:middle;"></a></li>
-              <li><a ng-click="down()" href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(90deg);"></a></li>
-              <li><a ng-click="settings()" href="#"><img src="icons/mechanical-gears.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
-              <li><a ng-click="info()" href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+              <li><a ng-click="up()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(-90deg);"></a></li>
+              <li><a ng-click="pause_and_play()" ng-href="#"><img ng-src="{{ pause_or_play_icon }}" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+              <li><a ng-click="down()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(90deg);"></a></li>
+              <li><a ng-click="settings()" ng-href="#"><img src="icons/mechanical-gears.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+              <li><a ng-click="info()" ng-href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
             </ul>
           </li>
         </ul>

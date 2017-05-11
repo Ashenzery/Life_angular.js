@@ -1,5 +1,5 @@
-var app = angular.module('myApp', [])
-
+var app = angular.module('myApp', ['rzModule'])
+/*
 .directive('popUpDialog', function(){
   return {
     restrict: 'E',
@@ -7,7 +7,8 @@ var app = angular.module('myApp', [])
     template: popUpDialog.html,
     controller: function( $scope ) {
       $scope.showPopUpDialog = true;
-      $scope.popUpDialogContent = 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz'
+      $scope.popUpDialogContent = null;
     }
   }
 })
+*/
