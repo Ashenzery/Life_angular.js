@@ -1,4 +1,4 @@
-alert("todo: модельное окно инфодайлога, прелоадер, добавить альтернативных стилей, альтернативные шаблоны, favicon, исправить начальное положение слайдера и вообще сделать нормальный settings")
+alert("todo: модельное окно инфодайлога, прелоадер, довести до ума стили, favicon, изменить слайдер и селектор на ангуларовские")
 
 
 var glider = [
@@ -12,6 +12,30 @@ var dieHard = [
   [1, 1],
   [0, 1, 0, 0, 0, 1, 1, 1]
   ];
+
+var theRPentomino = [
+  [0, 1, 1],
+  [1, 1, 0],
+  [0, 1, 0]
+]
+
+var acorn = [
+  [0, 1],
+  [0, 0, 0, 1],
+  [1, 1, 0, 0, 1, 1, 1]
+]
+
+var gGG = [
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
 
 deepCopy = function(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -82,7 +106,7 @@ app.controller('Controller',[
     $scope.slider = {
     value: 500,
     options: {
-        floor: 40,
+        floor: 50,
         ceil: 1000,
         step: 5,
         rightToLeft: true,
@@ -110,7 +134,7 @@ app.controller('Controller',[
       }
       $scope.story = [];
       $scope.story[0] = board;
-      $scope.maps = $scope.makeList($scope.story, 35, 35);
+      $scope.maps = $scope.makeList($scope.story, 40, 40);
       $scope.board = deepCopy(board)
     };
     $scope.pause_or_play_icon = "icons/music-player-play.png",
@@ -118,7 +142,7 @@ app.controller('Controller',[
       var n = 0;
       for(var counterY = y-1; counterY < y+2; counterY++) {
         for(var counterX = x-1; counterX < x+2; counterX++) {
-          [new_y, new_x] = warp(counterY, counterX, 35, 35);
+          [new_y, new_x] = warp(counterY, counterX, 40, 40);
            if (counterX === x && counterY === y) {
             continue;
           } if (board[new_y][new_x]) {
@@ -157,7 +181,7 @@ app.controller('Controller',[
       var x = 0;
       for (var c = 0; c < maps.length; c++) {
         [y, x] = maps[c];
-        var cell = warp(y, x, 35, 35);
+        var cell = warp(y, x, 40, 40);
         y = cell[0];
         x = cell[1];
         if (board[y][x]) {
@@ -180,7 +204,7 @@ app.controller('Controller',[
         if(isSame($scope.board, $scope.story[gen])) {
           //location.href=location.href;
           if (!gen) {
-            $scope.initBoard(35, 35, deepCopy($scope.story[0]), 0, 0);
+            $scope.initBoard(40, 40, deepCopy($scope.story[0]), 0, 0);
             $scope.story.length = 1;
           /*} else if (gen > 2) {
             $scope.board = deepCopy($scope.story[gen])
@@ -192,7 +216,7 @@ app.controller('Controller',[
         }
       }
     },
-    $scope.initBoard(35, 35, glider, 0, 0);
+    $scope.initBoard(40, 40, glider, 0, 0);
 
     $scope.main = function() {
       $scope.crutch = false;
@@ -200,7 +224,7 @@ app.controller('Controller',[
       $scope.board = $scope.genStep($scope.maps, $scope.story)
       $scope.isRepeated()
       $scope.story[$scope.story.length] = $scope.board
-      $scope.maps = $scope.makeList($scope.story, 35, 35)
+      $scope.maps = $scope.makeList($scope.story, 40, 40)
       $scope.crutch = true;
     },
     $scope.mainTimer = $interval($scope.main, 10000),
@@ -232,9 +256,11 @@ app.controller('Controller',[
     };
     $scope.pause_and_play = function() {
       if ($scope.showEditor) {
-        return
+        $scope.showEditor = !$scope.showEditor;
+        $scope.pause_or_play_icon = "icons/music-player-pause-lines.png"
+        $scope.initBoard(40, 40, deepCopy($scope.board), 0, 0)
       }
-      if(!$scope.mainTimer.$$state.status) {
+      if (!$scope.mainTimer.$$state.status) {
         $scope.pause_or_play_icon = "icons/music-player-play.png"
         $scope.pause();
       } else {
@@ -253,7 +279,7 @@ app.controller('Controller',[
       if ($scope.showEditor) {
         $scope.pause()
       } else {
-        $scope.initBoard(35, 35, deepCopy($scope.board), 0, 0)
+        $scope.initBoard(40, 40, deepCopy($scope.board), 0, 0)
       }
     };
     $scope.closeInfoDialog = function() {
@@ -265,13 +291,21 @@ app.controller('Controller',[
       $scope.board[x][y] = +!$scope.board[x][y]
     };
     $scope.colors = [
-      { name: "chaos", src: "css/chaos.css" },
+      { name: "chaos",    src: "css/chaos.css" },
+      { name: "burichan", src:"css/burichan.css"},
+      { name: "futaba",   src: "css/futaba.css"},
+      { name: "gurochan", src: "css/gurochan.css"},
+      { name: "kusaba",   src: "css/kusaba.css"},
+      { name: "photon",   src: "css/photon.css"},
       { name: "bluemoon", src: "css/bluemoon.css" }
     ];
     $scope.characters = [
-      { name: "Glider", matrix: glider, yShift: 0 , xShift: 0},
-      { name: "Die Hard", matrix: dieHard, yShift: 15 , xShift: 13},
-      { name: "Clear", matrix: [[]], yShift: 0 , xShift: 0}
+      { name: "Glider",            matrix: glider,        yShift: 0,   xShift: 0},
+      { name: "Die Hard",          matrix: dieHard,       yShift: 18,  xShift: 16},
+      { name: "Acorn",             matrix: acorn,         yShift: 18,  xShift: 17},
+      { name: "The R-pentomino",   matrix: theRPentomino, yShift: 18,  xShift: 18},
+      { name: "Gosper glider gun", matrix: gGG,           yShift: 15,  xShift: 2},
+      { name: "Clear",             matrix: [[]],          yShift: 0 ,  xShift: 0}
     ];
     $scope.setColor = function() {
       document.getElementById("color").href = $scope.selectedColor.src

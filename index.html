@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title><-Game of Life-></title>
   <link href="css/main.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="rzslider.min.css"/>
   <link href="css/chaos.css" rel="stylesheet" id="color">
+  <link rel="stylesheet" type="text/css" href="rzslider.min.css"/>
   <!-- Modules -->
   <script src="angular.min.js"></script>
   <script src="app.js"></script>
@@ -50,10 +50,9 @@
         <tr class="settings">
           <td>
             <select ng-model="selectedColor" ng-options="x.name for x in colors" ng-change="setColor()"></select>
-            <select ng-model="selectedForm" ng-options="x.name for x in characters" ng-change="initBoard(35, 35, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)"></select>
+            <select ng-model="selectedForm" ng-options="x.name for x in characters" ng-click="initBoard(40, 40, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)"></select>
             <rzslider class="custom-slider"  rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
           </td>
-        </tr>
       </table>
     </div>
   </div>
@@ -73,6 +72,6 @@
       <div class="preloader" ng-init="preloaderShow = true" ng-show="preloaderShow">
 
       </div>
-    <script>preloaderShow = false</script>
+    <script>//preloaderShow = false</script>
 </body>
 </html>
