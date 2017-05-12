@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title><-Game of Life-></title>
-  <link href="css/main.css" rel="stylesheet">
-  <link href="css/chaos.css" rel="stylesheet" id="color">
-  <link rel="stylesheet" type="text/css" href="rzslider.min.css"/>
+  <link href="angular-material.min.css" rel="stylesheet">
+  <link href="css/main.css"             rel="stylesheet">
+  <link href="css/chaos.css"            rel="stylesheet" id="color">
+  <!--<link href="rzslider.min.css"         rel="stylesheet">-->
   <!-- Modules -->
   <script src="angular.min.js"></script>
   <script src="app.js"></script>
+  <script src="angular-animate.min.js"></script>
+  <script src="angular-aria.min.js"></script>
+  <script src="angular-material.min.js"></script>
   <!-- Controllers -->
   <script src="controllers/Controller.js"></script>
+  <script src="controllers/SelectController.js"></script>
   <!-- Filters -->
   <script src="filters/blackSquare.js"></script>
   <script src="filters/whiteSquare.js"></script>
@@ -48,10 +53,28 @@
           </td>
         </tr>
         <tr class="settings">
-          <td>
-            <select ng-model="selectedColor" ng-options="x.name for x in colors" ng-change="setColor()"></select>
-            <select ng-model="selectedForm" ng-options="x.name for x in characters" ng-click="initBoard(40, 40, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)"></select>
-            <rzslider class="custom-slider"  rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+          <td ng-controller="SelectController">
+            <md-input-container style="margin-right: 10px;">
+              <label>Style</label>
+              <md-select ng-model="selectedColor" ng-change="setColor()">
+                <md-option ng-repeat="style in colors" ng-value="style.src">{{style.name}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container style="margin-right: 10px;">
+              <label>Pattern</label>
+              <md-select ng-model="selectedForm" ng-change="initBoard(size, size, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)">
+                <md-option  ng-repeat="form in characters" ng-value="form">{{form.name}}</md-option>
+              </md-select>
+            </md-input-container>
+            <md-content style="margin: 16px; padding:16px">
+              <md-input-container>
+                <input flex="" type="number" ng-model="delay" aria-label="invert-slider">
+              </md-input-container>
+              <md-slider aria-label="invertd slider" md-invert="" ng-model="delay" min="50" max="1100"></md-slider>
+            </md-content>
+            <!--<select ng-model="selectedColor" ng-options="x.name for x in colors" ng-change="setColor()"></select>-->
+            <!--<select ng-model="selectedForm" ng-options="x.name for x in characters" ng-click="initBoard(40, 40, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)"></select>-->
+            <!--<rzslider class="custom-slider"  rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>-->
           </td>
       </table>
     </div>

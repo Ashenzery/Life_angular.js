@@ -1,1 +1,1 @@
-var app = angular.module('myApp', ['rzModule'])
+var app = angular.module('myApp', ['ngMaterial'])

@@ -1,4 +1,4 @@
-alert("todo: модельное окно инфодайлога, прелоадер, довести до ума стили, favicon, изменить слайдер и селектор на ангуларовские")
+alert("todo: модельное окно инфодайлога, прелоадер, довести до ума стили, в т.ч. и кнопок, favicon")
 
 
 var glider = [
@@ -103,17 +103,7 @@ app.controller('Controller',[
   '$interval',
   function($scope, $interval) {
     $scope.crutch = true;
-    $scope.slider = {
-    value: 500,
-    options: {
-        floor: 50,
-        ceil: 1000,
-        step: 5,
-        rightToLeft: true,
-        hidePointerLabels: true,
-        hideLimitLabels: true
-    }
-  };
+    $scope.size = 40;
     $scope.initBoard = function(x, y, form, yShift, xShift) {
       var board = new Array(y);
       for (var i = 0; i < y; i++) {
@@ -252,7 +242,7 @@ app.controller('Controller',[
       $interval.cancel($scope.mainTimer);
     };
     $scope.play = function() {
-      $scope.mainTimer = $interval($scope.main, $scope.slider.value);
+      $scope.mainTimer = $interval($scope.main, $scope.delay);
     };
     $scope.pause_and_play = function() {
       if ($scope.showEditor) {
@@ -289,26 +279,6 @@ app.controller('Controller',[
     $scope.showEditor = false;
     $scope.swap = function(x, y) {
       $scope.board[x][y] = +!$scope.board[x][y]
-    };
-    $scope.colors = [
-      { name: "chaos",    src: "css/chaos.css" },
-      { name: "burichan", src:"css/burichan.css"},
-      { name: "futaba",   src: "css/futaba.css"},
-      { name: "gurochan", src: "css/gurochan.css"},
-      { name: "kusaba",   src: "css/kusaba.css"},
-      { name: "photon",   src: "css/photon.css"},
-      { name: "bluemoon", src: "css/bluemoon.css" }
-    ];
-    $scope.characters = [
-      { name: "Glider",            matrix: glider,        yShift: 0,   xShift: 0},
-      { name: "Die Hard",          matrix: dieHard,       yShift: 18,  xShift: 16},
-      { name: "Acorn",             matrix: acorn,         yShift: 18,  xShift: 17},
-      { name: "The R-pentomino",   matrix: theRPentomino, yShift: 18,  xShift: 18},
-      { name: "Gosper glider gun", matrix: gGG,           yShift: 15,  xShift: 2},
-      { name: "Clear",             matrix: [[]],          yShift: 0 ,  xShift: 0}
-    ];
-    $scope.setColor = function() {
-      document.getElementById("color").href = $scope.selectedColor.src
     };
   }
 ]
