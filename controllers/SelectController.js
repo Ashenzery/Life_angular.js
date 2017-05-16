@@ -20,6 +20,5 @@ app.controller('SelectController', [
     $scope.setColor = function() {
       document.getElementById("color").href = $scope.selectedColor
     };
-    $scope.delay = 500;
   }
 ])

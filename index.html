@@ -8,22 +8,21 @@
   <link href="css/chaos.css"            rel="stylesheet" id="color">
   <!--<link href="rzslider.min.css"         rel="stylesheet">-->
   <!-- Modules -->
-  <script src="angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <!--<script src="angular.min.js"></script>-->
   <script src="app.js"></script>
   <script src="angular-animate.min.js"></script>
   <script src="angular-aria.min.js"></script>
   <script src="angular-material.min.js"></script>
   <!-- Controllers -->
-  <script src="controllers/Controller.js"></script>
+  <script src="controllers/MainController.js"></script>
   <script src="controllers/SelectController.js"></script>
   <!-- Filters -->
   <script src="filters/blackSquare.js"></script>
   <script src="filters/whiteSquare.js"></script>
   <script src="filters/test.js"></script>
-  <!-- Slider -->
-  <script src="rzslider.min.js"></script>
 </head>
-<body ng-app="myApp" ng-controller='Controller'>
+<body ng-app="myApp" ng-controller='MainController'>
   <div class="outer">
     <div ng-show ="!showEditor" class="inner">
       <table>
@@ -67,14 +66,8 @@
               </md-select>
             </md-input-container>
             <md-content style="margin: 16px; padding:16px">
-              <md-input-container>
-                <input flex="" type="number" ng-model="delay" aria-label="invert-slider">
-              </md-input-container>
-              <md-slider aria-label="invertd slider" md-invert="" ng-model="delay" min="50" max="1100"></md-slider>
+              <md-slider aria-label="invertd slider" md-invert="" ng-model="delay.value" min="50" max="3050" ng-change=""></md-slider>
             </md-content>
-            <!--<select ng-model="selectedColor" ng-options="x.name for x in colors" ng-change="setColor()"></select>-->
-            <!--<select ng-model="selectedForm" ng-options="x.name for x in characters" ng-click="initBoard(40, 40, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)"></select>-->
-            <!--<rzslider class="custom-slider"  rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>-->
           </td>
       </table>
     </div>

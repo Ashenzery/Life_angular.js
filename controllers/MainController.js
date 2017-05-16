@@ -1,4 +1,4 @@
-alert("todo: модельное окно инфодайлога, прелоадер, довести до ума стили, в т.ч. и кнопок, favicon")
+alert("todo: модельное окно инфодайлога, прелоадер, довести до ума стили, в т.ч. и кнопок, и ползунка, favicon, мобильные стили")
 
 
 var glider = [
@@ -98,7 +98,7 @@ var warp = function(fy, fx, yLenBoard, xLenBoard) {
 };
 
 
-app.controller('Controller',[
+app.controller('MainController',[
   '$scope',
   '$interval',
   function($scope, $interval) {
@@ -207,24 +207,23 @@ app.controller('Controller',[
       }
     },
     $scope.initBoard(40, 40, glider, 0, 0);
-
+    $scope.pageTitile = document.getElementsByTagName("TITLE")[0]
     $scope.main = function() {
       $scope.crutch = false;
-      $scope.pageTitile.text = 'Generation: ' + $scope.story.length
       $scope.board = $scope.genStep($scope.maps, $scope.story)
       $scope.isRepeated()
       $scope.story[$scope.story.length] = $scope.board
       $scope.maps = $scope.makeList($scope.story, 40, 40)
+      $scope.pageTitile.text = 'Generation: ' + $scope.story.length
       $scope.crutch = true;
     },
     $scope.mainTimer = $interval($scope.main, 10000),
     $interval.cancel($scope.mainTimer),
-    $scope.pageTitile = document.getElementsByTagName("TITLE")[0]
     $scope.showInfoDialog = false;
     $scope.info = function() {
       //$scope.showInfoDialog = true;
     };
-    $scope.up = function() {
+    $scope._up_ = function() {
       while (!$scope.crutch) {}
       if ($scope.story.length > 2 && !$scope.showEditor) {
         $scope.story.length--
@@ -242,7 +241,7 @@ app.controller('Controller',[
       $interval.cancel($scope.mainTimer);
     };
     $scope.play = function() {
-      $scope.mainTimer = $interval($scope.main, $scope.delay);
+      $scope.mainTimer = $interval($scope.main, $scope.delay.value);
     };
     $scope.pause_and_play = function() {
       if ($scope.showEditor) {
@@ -280,6 +279,8 @@ app.controller('Controller',[
     $scope.swap = function(x, y) {
       $scope.board[x][y] = +!$scope.board[x][y]
     };
+    $scope.delay = {value: 750};
+    //Из дочернего контроллера нельзя изменить свойство, только свойство свойства
   }
 ]
 );

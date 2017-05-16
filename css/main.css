@@ -102,35 +102,6 @@ ul {
   padding-top: 10px;
 }
 
-.custom-slider.rzslider .rz-bar {
-  height: 2px;
-}
-
-.custom-slider.rzslider .rz-pointer {
-  width: 8px;
-  height: 16px;
-  top: auto; /* to remove the default positioning */
-  bottom: 0;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-
-.custom-slider.rzslider .rz-pointer:after {
-  display: none;
-}
-
-.custom-slider.rzslider .rz-bubble {
-  bottom: 14px;
-}
-
-.custom-slider.rzslider .rz-limit {
-  font-weight: bold;
-}
-
-.custom-slider.rzslider .rz-tick {
-  width: 1px;
-  height: 10px;
-  margin-left: 4px;
-  border-radius: 0;
-  top: -1px;
+md-slider .md-track.md-track-fill {
+    background-color: rgb(155, 155, 155);
 }
