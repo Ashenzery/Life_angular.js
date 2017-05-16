@@ -1,4 +1,4 @@
-alert("todo: модельное окно инфодайлога, прелоадер, довести до ума стили, в т.ч. и кнопок, и ползунка, favicon, мобильные стили")
+alert("todo: прелоадер, довести до ума стили, в т.ч. и кнопок, и ползунка, мобильные стили")
 
 
 var glider = [
@@ -37,7 +37,7 @@ var gGG = [
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
-deepCopy = function(obj) {
+var deepCopy = function(obj) {
   return JSON.parse(JSON.stringify(obj));
 };
 
@@ -219,10 +219,6 @@ app.controller('MainController',[
     },
     $scope.mainTimer = $interval($scope.main, 10000),
     $interval.cancel($scope.mainTimer),
-    $scope.showInfoDialog = false;
-    $scope.info = function() {
-      //$scope.showInfoDialog = true;
-    };
     $scope._up_ = function() {
       while (!$scope.crutch) {}
       if ($scope.story.length > 2 && !$scope.showEditor) {

@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title><-Game of Life-></title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link href="angular-material.min.css" rel="stylesheet">
   <link href="css/main.css"             rel="stylesheet">
   <link href="css/chaos.css"            rel="stylesheet" id="color">
-  <!--<link href="rzslider.min.css"         rel="stylesheet">-->
   <!-- Modules -->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
   <!--<script src="angular.min.js"></script>-->
@@ -14,9 +15,13 @@
   <script src="angular-animate.min.js"></script>
   <script src="angular-aria.min.js"></script>
   <script src="angular-material.min.js"></script>
+  <script src="angular-messages.min.js"></script>
   <!-- Controllers -->
   <script src="controllers/MainController.js"></script>
   <script src="controllers/SelectController.js"></script>
+  <script src="controllers/DialogController.js"></script>
+
+  </script>
   <!-- Filters -->
   <script src="filters/blackSquare.js"></script>
   <script src="filters/whiteSquare.js"></script>
@@ -80,7 +85,7 @@
               <li><a ng-click="pause_and_play()" ng-href="#"><img ng-src="{{ pause_or_play_icon }}" alt=" " width="100%" style="vertical-align:middle;"></a></li>
               <li><a ng-click="down()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(90deg);"></a></li>
               <li><a ng-click="settings()" ng-href="#"><img src="icons/mechanical-gears.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
-              <li><a ng-click="info()" ng-href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+              <li><a ng-controller="DialogController" ng-click="showInfo($event)" ng-href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
             </ul>
           </li>
         </ul>

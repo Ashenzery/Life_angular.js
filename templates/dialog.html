@@ -1,0 +1,41 @@
+<md-dialog aria-label="Dialog">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Conway's Game of Life</h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <p>
+          The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.
+        </p>
+        <p>
+          The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves, or, for advanced "players", by creating patterns with particular properties.
+        </p>
+        <img style="margin: auto; max-width: 100%;" alt="gider" src="templates/life_cycle.png">
+        <h2>The Rules</h2>
+        <lu><b>For a space that is 'populated':</b>
+          <li>Each cell with one or no neighbors dies, as if by loneliness.</li>
+          <li>Each cell with four or more neighbors dies, as if by overpopulation.</li>
+          <li>Each cell with two or three neighbors survives.</li>
+        </lu>
+        <lu><b>For a space that is 'empty' or 'unpopulated'</b>
+          <li>Each cell with three neighbors becomes populated.</li>
+        </lu>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <md-button href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="cancel()">
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
