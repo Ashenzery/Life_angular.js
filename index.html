@@ -11,7 +11,7 @@
   <style>#page-preloader{position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:9;} .spinner{width:32px;height:32px;position:absolute;left:50%;top:50%;background:url('templates/spinner.gif')no-repeat 50% 50%;margin: -16px 0 0 -16px;}</style>
 </head>
 <body ng-app="myApp" ng-controller='MainController'>
-  <div ng-controller="PreloaderController" id="page-preloader" ng-hide="hidePreloader"><span class="spinner"></span></div>
+  <div ng-controller="PreloaderController" id="page-preloader" ng-hide="!!hidePreloader"><span class="spinner"></span></div>
   <div class="outer">
     <div ng-show ="!showEditor" class="inner">
       <table>
@@ -84,7 +84,7 @@
   <!-- Filters -->
   <script src="filters/blackSquare.js"></script>
   <script src="filters/whiteSquare.js"></script>
-  <script src="filters/test.js"></script>
+  <script src="filters/atAndUnderscore.js"></script>
   <!-- Controllers -->
   <script src="controllers/MainController.js"></script>
   <script src="controllers/SelectController.js"></script>
