@@ -5,29 +5,13 @@
   <title><-Game of Life-></title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link href="angular-material.min.css" rel="stylesheet">
+  <link href="css/angular-material.min.css" rel="stylesheet">
   <link href="css/main.css"             rel="stylesheet">
   <link href="css/chaos.css"            rel="stylesheet" id="color">
-  <!-- Modules -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-  <!--<script src="angular.min.js"></script>-->
-  <script src="app.js"></script>
-  <script src="angular-animate.min.js"></script>
-  <script src="angular-aria.min.js"></script>
-  <script src="angular-material.min.js"></script>
-  <script src="angular-messages.min.js"></script>
-  <!-- Controllers -->
-  <script src="controllers/MainController.js"></script>
-  <script src="controllers/SelectController.js"></script>
-  <script src="controllers/DialogController.js"></script>
-
-  </script>
-  <!-- Filters -->
-  <script src="filters/blackSquare.js"></script>
-  <script src="filters/whiteSquare.js"></script>
-  <script src="filters/test.js"></script>
+  <style>#page-preloader{position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:9;} .spinner{width:32px;height:32px;position:absolute;left:50%;top:50%;background:url('templates/spinner.gif')no-repeat 50% 50%;margin: -16px 0 0 -16px;}</style>
 </head>
 <body ng-app="myApp" ng-controller='MainController'>
+  <div ng-controller="PreloaderController" id="page-preloader" ng-hide="hidePreloader"><span class="spinner"></span></div>
   <div class="outer">
     <div ng-show ="!showEditor" class="inner">
       <table>
@@ -77,22 +61,34 @@
       </table>
     </div>
   </div>
-    <div class="side"  ng-mouseenter="showDropMenu = true" ng-mouseleave="showDropMenu = false">
-        <ul class="menu">
-          <li class="menu__list"><a ng-href="#"><img src="icons/list.png"  border="0" alt=" " width="100%"></a>
-            <ul class="menu__drop" ng-show="showDropMenu">
-              <li><a ng-click="up()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(-90deg);"></a></li>
-              <li><a ng-click="pause_and_play()" ng-href="#"><img ng-src="{{ pause_or_play_icon }}" alt=" " width="100%" style="vertical-align:middle;"></a></li>
-              <li><a ng-click="down()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(90deg);"></a></li>
-              <li><a ng-click="settings()" ng-href="#"><img src="icons/mechanical-gears.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
-              <li><a ng-controller="DialogController" ng-click="showInfo($event)" ng-href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
-            </ul>
-          </li>
+  <div class="side"  ng-mouseenter="showDropMenu = true" ng-mouseleave="showDropMenu = false">
+    <ul class="menu">
+      <li class="menu__list"><a ng-href="#"><img src="icons/list.png"  border="0" alt=" " width="100%"></a>
+        <ul class="menu__drop" ng-show="showDropMenu">
+          <li><a ng-click="up()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(-90deg);"></a></li>
+          <li><a ng-click="pause_and_play()" ng-href="#"><img ng-src="{{ pause_or_play_icon }}" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+          <li><a ng-click="down()" ng-href="#"><img src="icons/move-to-next.png" alt=" " width="100%" style="vertical-align:middle; transform: rotate(90deg);"></a></li>
+          <li><a ng-click="settings()" ng-href="#"><img src="icons/mechanical-gears.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
+          <li><a ng-controller="DialogController" ng-click="showInfo($event)" ng-href="#"><img src="icons/information.png" alt=" " width="100%" style="vertical-align:middle;"></a></li>
         </ul>
-      </div>
-      <div class="preloader" ng-init="preloaderShow = true" ng-show="preloaderShow">
-
-      </div>
-    <script>//preloaderShow = false</script>
+      </li>
+    </ul>
+  </div>
+  <!-- Modules -->
+  <script src="modules/angular.min.js"></script>
+  <script src="modules/app.js"></script>
+  <script src="modules/angular-animate.min.js"></script>
+  <script src="modules/angular-aria.min.js"></script>
+  <script src="modules/angular-material.min.js"></script>
+  <script src="modules/angular-messages.min.js"></script>
+  <!-- Filters -->
+  <script src="filters/blackSquare.js"></script>
+  <script src="filters/whiteSquare.js"></script>
+  <script src="filters/test.js"></script>
+  <!-- Controllers -->
+  <script src="controllers/MainController.js"></script>
+  <script src="controllers/SelectController.js"></script>
+  <script src="controllers/DialogController.js"></script>
+  <script src="controllers/PreloaderController.js"></script>
 </body>
 </html>

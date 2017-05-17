@@ -9,7 +9,7 @@ app.controller('DialogController', function($scope, $mdDialog) {
       templateUrl: 'templates/dialog.html',
       parent: angular.element(document.body),
       targetEvent: ev,
-      clickOutsideToClose:true,
+      clickOutsideToClose: true,
       fullscreen: true
     })
   };
