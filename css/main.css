@@ -31,6 +31,7 @@ ul {
 .cell {
   width: 10px;
   height: 10px;
+  padding: 0;
 }
 
 .ph, .settings {
@@ -108,7 +109,7 @@ md-slider .md-track.md-track-fill {
 
 .dialogdemoBasicUsage #popupContainer {
 position: relative; }
-
+/*
 .dialogdemoBasicUsage .footer {
 width: 100%;
 text-align: center;
@@ -126,3 +127,4 @@ color: #c60008; }
 
 .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
 margin-bottom: 0; }
+*/

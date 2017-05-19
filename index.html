@@ -33,7 +33,7 @@
           <td>
             <table class="tableInTable">
               <tr ng-repeat="(rowIndex, row) in board" class="row">
-                <td ng-repeat="cell in row track by $index">
+                <td ng-repeat="cell in row track by $index" class="cell">
                   <div ng-click="swap(rowIndex, $index)">{{cell | whiteSquare}}</div>
                 </td>
               </tr>

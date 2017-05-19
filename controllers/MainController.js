@@ -1,4 +1,4 @@
-//alert("todo:довести до ума стили, в т.ч. и кнопок, и ползунка, мобильные стили")
+//alert("todo:довести до ума стили, в т.ч. и кнопок, и ползунка, мобильные стили, добавить генерации рандомной формы и размера")
 
 
 var glider = [
@@ -36,6 +36,10 @@ var gGG = [
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+
+var random = function() {
+
+}
 
 var deepCopy = function(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -228,18 +232,14 @@ app.controller('MainController',[
       };
     };
     $scope.pause = function() {
-      while (!$scope.crutch) {
-            //Костыль, чтобы не обрывать выполнение main()
-            //Я правда не знаю, как тут иначе поступить
-            //И вообще, я первый раз делаю асинхронное приложение
-          };
-
+      while (!$scope.crutch) {};
       $interval.cancel($scope.mainTimer);
     };
     $scope.play = function() {
       $scope.mainTimer = $interval($scope.main, $scope.delay.value);
     };
     $scope.pause_and_play = function() {
+      $scope.showDropMenu = false;
       if ($scope.showEditor) {
         $scope.showEditor = !$scope.showEditor;
         $scope.pause_or_play_icon = "icons/music-player-pause-lines.png"
@@ -270,7 +270,6 @@ app.controller('MainController',[
     $scope.closeInfoDialog = function() {
       $scope.showInfoDialog = false;
     };
-    //$scope.showDropMenu = false;
     $scope.showEditor = false;
     $scope.swap = function(x, y) {
       $scope.board[x][y] = +!$scope.board[x][y]
