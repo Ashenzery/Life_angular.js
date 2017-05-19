@@ -20,7 +20,8 @@ html, body {
 .menu li .menu__drop li a {
     border-top: 1px solid #00ffff;
 }
-
+/*
 md-slider .md-default-theme .md-thumb:after, md-slider .md-thumb:after {
     border-color: rgba(0, 255, 255, 1);
     background-color: rgba(0, 255, 255, 1);
+*/

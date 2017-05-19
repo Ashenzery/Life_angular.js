@@ -5,18 +5,13 @@ html, body {
 
 table {
     border-spacing: 0px 0px;
+    padding: 0;
     margin: 0;
     margin-top: -2px;
     margin-bottom: 2px;
     border: 0;
     border-collapse: collapse;
  }
-
- td {
-  text-align: center; /* Выравниваем текст по центру ячейки */
-  line-height: 65%;
-  font-family: Lucida Console, monospace;
-}
 
 a {
   text-decoration: none;
@@ -29,6 +24,9 @@ ul {
 }
 
 .cell {
+  text-align: center; /* Выравниваем текст по центру ячейки */
+  line-height: 65%;
+  font-family: Lucida Console, monospace;
   width: 10px;
   height: 10px;
   padding: 0;
@@ -37,7 +35,7 @@ ul {
 .ph, .settings {
   border: 0;
   border-collapse: collapse;
-  height: 100px;
+  height: 150px;
   width: 100%;
 }
 

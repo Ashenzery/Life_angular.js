@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><I`m TEST></title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  </head>
+  <body ng-app="myApp" ng-controller='MainController'>
+    <script>
+      var app = angular.module('myApp', ['ngMaterial'])
+      app.controller('MainController', [
+        '$scope',
+        function($scope) {
+          $scope.colors = [
+            { name: "chaos",    src: "css/chaos.css" },
+            { name: "burichan", src:"css/burichan.css"},
+            { name: "futaba",   src: "css/futaba.css"},
+            { name: "kusaba",   src: "css/kusaba.css"},
+            { name: "photon",   src: "css/photon.css"},
+            { name: "bluemoon", src: "css/bluemoon.css" }
+          ];
+        }]);
+      app.controller('AppCtrl', function($scope, $mdDialog) {
+        $scope.showAdvanced = function(ev) {
+          $mdDialog.show({
+            controller: DialogController,
+            templateUrl: 'templates/dialog.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: true
+          });
+        };
+        function DialogController($scope, $mdDialog) {
+          $scope.cancel = function() {
+            $mdDialog.cancel();
+          };
+        }
+      });
+      app.config(function($mdThemingProvider) {
+        /*$mdThemingProvider.theme('default')
+          .primaryPalette('red', {'default': '300'})
+          .accentPalette('red', {'default': '100'})
+          .warnPalette('red', {'default': '100'})
+          .backgroundPalette('cyan', {'default': '100'})
+          .dark();*/
+          var neonRedMap = $mdThemingProvider.extendPalette('red', {
+            '500': '#ff0000',
+            'contrastDefaultColor': 'dark'
+          });
+
+          // Register the new color palette map with the name <code>neonRed</code>
+          $mdThemingProvider.definePalette('neonRed', neonRedMap);
+
+          // Use that theme for the primary intentions
+          $mdThemingProvider.theme('default')
+            .primaryPalette('neonRed')
+      });
+    </script>
+    <style>
+    .dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }
+  </style>
+
+    <div ng-controller="AppCtrl" class="md-padding" id="popupContainer" ng-cloak>
+      <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
+        <md-button class="md-primary md-raised" ng-click="">
+          Dialog
+        </md-button>
+      </div>
+      <md-input-container style="margin-right: 10px;">
+        <label>Style</label>
+        <md-select ng-model="selectedColor" ng-change="setColor()" class="md-primary md-raised">
+          <md-option ng-repeat="style in colors" ng-value="style.src">{{style.name}}</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+
+
+  </body>
+</html>

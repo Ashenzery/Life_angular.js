@@ -42,19 +42,19 @@
         </tr>
         <tr class="settings">
           <td ng-controller="SelectController">
-            <md-input-container style="margin-right: 10px;">
+            <!--<md-input-container style="margin-right: 10px;">
               <label>Style</label>
               <md-select ng-model="selectedColor" ng-change="setColor()">
                 <md-option ng-repeat="style in colors" ng-value="style.src">{{style.name}}</md-option>
               </md-select>
-            </md-input-container>
-            <md-input-container style="margin-right: 10px;">
+            </md-input-container>-->
+            <md-input-container style="/*margin-right: 10px;*/">
               <label>Pattern</label>
               <md-select ng-model="selectedForm" ng-change="initBoard(size, size, selectedForm.matrix, selectedForm.yShift, selectedForm.xShift)">
                 <md-option  ng-repeat="form in characters" ng-value="form">{{form.name}}</md-option>
               </md-select>
             </md-input-container>
-            <md-content style="margin: 16px; padding:16px">
+            <md-content style="padding:14px">
               <md-slider aria-label="invertd slider" md-invert="" ng-model="delay.value" min="50" max="3050" ng-change=""></md-slider>
             </md-content>
           </td>
