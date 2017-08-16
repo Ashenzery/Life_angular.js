@@ -5,10 +5,30 @@
   <title><-Game of Life-></title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link href="css/angular-material.min.css" rel="stylesheet">
-  <link href="css/main.css"             rel="stylesheet">
-  <link href="css/chaos.css"            rel="stylesheet" id="color">
-  <style>#page-preloader{position:fixed;left:0;top:0;right:0;bottom:0;background:#000;z-index:9;} .spinner{width:32px;height:32px;position:absolute;left:50%;top:50%;background:url('templates/spinner.gif')no-repeat 50% 50%;margin: -16px 0 0 -16px;}</style>
+  <link href="css/angular-material.min.css"  rel="stylesheet">
+  <link href="css/main.css"                  rel="stylesheet">
+  <link href="css/chaos.css"                 rel="stylesheet" id="color">
+  <style>
+  #page-preloader {
+    position:fixed;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+    background:#000;
+    z-index:9;
+    }
+    .spinner {
+      width:32px;
+      height:32px;
+      position:absolute;
+      left:50%;
+      top:50%;
+      background:url('templates/spinner.gif')
+      no-repeat 50% 50%;
+      margin: -16px 0 0 -16px;
+    }
+  </style>
 </head>
 <body ng-app="myApp" ng-controller='MainController'>
   <div ng-controller="PreloaderController" id="page-preloader" ng-hide="!!hidePreloader"><span class="spinner"></span></div>

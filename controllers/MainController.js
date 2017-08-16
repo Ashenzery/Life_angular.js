@@ -1,4 +1,4 @@
-//alert("todo:довести до ума стили, в т.ч. и кнопок, и ползунка, мобильные стили, добавить генерации рандомной формы и размера")
+//TODO:исправить циклические фигуры
 
 
 var glider = [
@@ -36,10 +36,6 @@ var gGG = [
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
-
-var random = function() {
-
-}
 
 var deepCopy = function(obj) {
   return JSON.parse(JSON.stringify(obj));
@@ -82,6 +78,24 @@ var deepIsIn = function(arr, arrOfArr) {
     }
   } return false;
 };
+
+var random = function(rate) {
+  let padding = [0, 1, 2, 37, 38, 39]
+  let matrix = []
+  for (let y = 0; y < 40; y++) {
+    matrix[y] = [];
+    for (let x = 0; x < 40; x++) {
+      if (isIn(y, padding) || isIn(x, padding)) {
+        matrix[y][x] = 0;
+      } else if (Math.random() < rate) {
+        matrix[y][x] = 1;
+      } else {
+        matrix[y][x] = 0;
+      }
+    }
+  }
+  return matrix;
+}
 
 var warp = function(fy, fx, yLenBoard, xLenBoard) {
   var y, x;
